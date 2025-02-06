@@ -43,7 +43,7 @@ table.tblone img{height: 90px;width: 100px;}
 							 ?>
 								<td><?php echo $i;?></td>
 								<td><?php echo $result['productName']; ?></td>
-								<td>TK. <?php echo $result['price']; ?></td>
+								<td>₱ <?php echo $result['price']; ?></td>
 								<td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
 								<td><a href="details.php?proid=<?php echo $result['productId']; ?>">View</a></td>
 								

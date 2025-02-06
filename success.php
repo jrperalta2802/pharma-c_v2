@@ -29,7 +29,7 @@ if ($login == false) {
                }
             }
              ?>
-            <p>Total Payable Amount(Including VAT): tk. 
+            <p>Total Payable Amount(Including VAT): ₱ 
                 <?php 
                 $vat = $sum*0.1;
                 $total = $sum+$vat;

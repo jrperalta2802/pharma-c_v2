@@ -71,7 +71,7 @@ if (!isset($_GET['id'])) {
 								<td><?php echo $i;?></td>
 								<td><?php echo $result['productName']; ?></td>
 								<td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
-								<td>Tk. <?php echo $result['price']; ?></td>
+								<td>₱ <?php echo $result['price']; ?></td>
 					<td>
 						<form action="" method="post">
 
@@ -81,7 +81,7 @@ if (!isset($_GET['id'])) {
 						</form>
 					</td>
 								<td>
-							Tk. <?php
+							₱ <?php
 						$total = $result['price'] * $result['quantity'];
 						echo $total;
 						 ?>
@@ -110,7 +110,7 @@ if (!isset($_GET['id'])) {
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
-								<td>TK. <?php echo $sum; ?></td>
+								<td>₱ <?php echo $sum; ?></td>
 							</tr>
 							<tr>
 								<th>VAT : </th>
@@ -118,7 +118,7 @@ if (!isset($_GET['id'])) {
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
-								<td>TK. 
+								<td>₱ 
 									<?php 
 									$vat = $sum * 0.1;
 									$gtotal = $sum + $vat;
