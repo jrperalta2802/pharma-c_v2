@@ -62,7 +62,7 @@ if (isset($_GET['delproid'])) {
 							<td><?php echo $fm->formatDate($result['date']); ?></td>
 							<td><?php echo $result['productName']; ?></td>
 							<td><?php echo $result['quantity']; ?></td>
-							<td>TK. <?php echo $result['price']; ?></td>
+							<td>₱ <?php echo $result['price']; ?></td>
 							<td><?php echo $result['cmrId']; ?></td>
 							<td><a href="customer.php?custId=<?php echo $result['cmrId']; ?>">View Details</a></td>
 

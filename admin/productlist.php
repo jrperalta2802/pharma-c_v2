@@ -59,7 +59,7 @@ if (isset($_GET['delpro'])) {
 					<td><?php echo $result['catName'] ;?></td>
 					<td><?php echo $result['brandName'] ;?></td>
 					<td><?php echo $fm->textShorten($result['body'],50) ;?></td>
-					<td>TK.<?php echo $result['price'] ;?></td>
+					<td>₱<?php echo $result['price'] ;?></td>
 					<td><img src="<?php echo $result['image'] ;?>" height="40px" width="60px" ></td>
 					<td>
 						<?php 

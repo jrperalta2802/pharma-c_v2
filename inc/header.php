@@ -98,7 +98,7 @@ $cmr = new Customer();
 							if ($getData) {
 								$sum = Session::get("sum");
 								$qty = Session::get("qty");
-								echo "TK.". $sum." qty: ".$qty;
+								echo "₱". $sum." qty: ".$qty;
 							}else{
 								echo "(Empty)";
 							}
@@ -144,7 +144,6 @@ if ($login == false) {  ?>
 	<ul id="dc_mega-menu-orange" style="text-transform: uppercase;" class="dc_mm-orange">
 	<div class="topnav" id="myTopnav">
 	  <a href="index.php">Home</a>
-	  <a href="topbrands.php">Top Brands</a>
 <?php 
 $chkCart = $ct->checkCartTable();
 if ($chkCart) { ?>

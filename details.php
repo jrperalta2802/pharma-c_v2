@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wlist'])) {
 				<div class="desc span_3_of_2">
 					<h2><?php echo $result['productName']; ?> </h2>				
 					<div class="price">
-						<p>Price: <span>TK.<?php echo $result['price']; ?></span></p>
+						<p>Price: <span>₱<?php echo $result['price']; ?></span></p>
 						<p>Category: <span><?php echo $result['catName']; ?></span></p>
 						<p>Brand:<span><?php echo $result['brandName']; ?></span></p>
 					</div>

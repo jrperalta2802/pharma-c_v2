@@ -56,10 +56,10 @@ if (isset($_GET['orderid']) && $_GET['orderid'] == 'Order') {
                              ?>
                                 <td><?php echo $i;?></td>
                                 <td><?php echo $result['productName']; ?></td>
-                                <td>Tk. <?php echo $result['price']; ?></td>
+                                <td>₱ <?php echo $result['price']; ?></td>
                                  <td><?php echo $result['quantity']; ?></td>
                                 <td>
-                            Tk. <?php
+                            ₱ <?php
                         $total = $result['price'] * $result['quantity'];
                         echo $total;
                          ?>
@@ -80,17 +80,17 @@ if (isset($_GET['orderid']) && $_GET['orderid'] == 'Order') {
                             <tr>
                                 <td>Sub Total</td>
                                 <td>:</td>
-                                <td>TK. <?php echo $sum; ?></td>
+                                <td>₱ <?php echo $sum; ?></td>
                             </tr>
                             <tr>
                                 <td>VAT</td>
                                 <td>:</td>
-                                <td>10%(TK.<?php echo $vat = $sum * 0.1; ?>)</td>
+                                <td>10%(₱<?php echo $vat = $sum * 0.1; ?>)</td>
                             </tr>
                             <tr>
                                 <td>Grand Total</td>
                                 <td>:</td>
-                                <td>TK. 
+                                <td>₱ 
                                     <?php 
                                     $vat = $sum * 0.1;
                                     $gtotal = $sum + $vat;
