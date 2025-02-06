@@ -1,0 +1,11 @@
+admin access 
+
+http://localhost/shop/admin/login.php
+
+username: admin
+password: 122713
+
+
+user access 
+
+http://localhost/shop/login.php
