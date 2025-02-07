@@ -433,27 +433,20 @@ End Login ***/
 }
 .header_bottom{margin-bottom:10px;}
 /**** Header Botttom Left ****/
-.header_bottom_left{
-	float:left;
-	width:50%;
-	padding-top:6px;
+.header_bottom_left {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding-top: 6px;
 }
-.header_bottom_img{
-	float:left;
+.header_bottom_img, .pic, .header_bottom_img2 {
 	width: 46.2%;
+	margin: 0 1.6%;
 }
-.pic{
-	float:left;
-	width: 46.2%;
-}
-.header_bottom_img2{
-	float:left;
-	width: 46.2%;
-	margin-left:1.6%;
-}
-.header_bottom_left_images{
-	position:relative;
-	margin-top:10px;
+.header_bottom_left_images {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
 	box-shadow: 0px 0px 3px rgb(150, 150, 150);
 }
 .section {

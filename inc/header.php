@@ -69,6 +69,46 @@ $cmr = new Customer();
   
 
 }
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 </style>
 
 
@@ -144,6 +184,17 @@ if ($login == false) {  ?>
 	<ul id="dc_mega-menu-orange" style="text-transform: uppercase;" class="dc_mm-orange">
 	<div class="topnav" id="myTopnav">
 	  <a href="index.php">Home</a>
+	  <div class="dropdown">
+			<button class="dropbtn">Category 
+			<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+			</div>
+		
+ 
 <?php 
 $chkCart = $ct->checkCartTable();
 if ($chkCart) { ?>
@@ -165,13 +216,6 @@ if ($chkOrder) { ?>
 		<a href="profile.php">Profile</a> 
 		<?php } ?>
 	  
-
-		<?php 
-		$getPd = $pd->getCompareData($cmrId);
-		if ($getPd) {
-			?>
-	  <a href="compare.php">Compare</a> 
-	  <?php } ?>
 
 	  <?php 
 		$chekwlist = $pd->checkWlistData($cmrId);
