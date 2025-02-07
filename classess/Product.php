@@ -242,6 +242,7 @@ public function getNewProduct(){
 
 }
 
+
 public function getSingleProduct($id){
 
 	$query = "SELECT p.*,c.catName,b.brandName
