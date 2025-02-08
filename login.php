@@ -203,6 +203,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
 		    </tbody></table> 
 		   <div class="search"><div><button class="grey" name="register">Create Account</button></div></div>
 		    <div class="clear"></div>
+            <br>
+            <div style="text-align: center;">
+            <a href="admin/login.php">Login as Admin</a>
+            </div>
 		    </form>
     	</div>  	
        <div class="clear"></div>
