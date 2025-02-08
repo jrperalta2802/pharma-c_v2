@@ -209,6 +209,14 @@
 
 </style>
 <?php
+if (isset($_GET['delcat'])) {
+    $catId = $_GET['delcat'];
+    $deleteCat = $cat->delCatById($catId);
+    echo json_encode(["message" => $deleteCat]);
+    exit;
+}
+?>
+<?php
 $cat = new Category();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
