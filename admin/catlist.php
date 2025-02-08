@@ -1,59 +1,9 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
 <?php include '../classess/Category.php';?>
-<?php
-$cat = new Category();
 
-if (isset($_GET['delcat'])) {
-	$id = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['delcat']);
-	$delcat = $cat->delcatById($id);
-}
-?>
-<?php
-$cat = new Category();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['catId']) && isset($_POST['catName'])) {
-        // Updating category
-        $catId = $_POST['catId'];
-        $catName = $_POST['catName'];
-        $updateCat = $cat->catUpdate($catName, $catId);
-        echo json_encode(["message" => $updateCat]);
-    } else {
-        // Adding new category
-        $catName = $_POST['catName'];
-        $insertCat = $cat->catInsert($catName);
-        echo json_encode(["message" => $insertCat]);
-    }
-    exit;
-}
-?>
-
-<div class="grid_10">
-    <div class="box round first grid">
-        <!-- Header bar with aligned title & centered button -->
-        <div class="header-bar">
-            <h2>Category List</h2>
-            <button id="openModalBtn">Add New Category</button>
-        </div>
-
-                	<?php 
-
-                	if (isset($delcat)) {
-                		echo $delcat;
-                	}
-
-                	?>
-
-                    <table class="data display datatable" id="example">
-					<thead>
-						<tr>
-							<th>Serial No.</th>
-							<th>Category Name</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-                    <style>
+<style>
 /* Styles for the modal */
 .modal {
     display: none;
@@ -258,100 +208,131 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 </style>
-					<tbody>
+<?php
+if (isset($_GET['delcat'])) {
+    $catId = $_GET['delcat'];
+    $deleteCat = $cat->delCatById($catId);
+    echo json_encode(["message" => $deleteCat]);
+    exit;
+}
+?>
+<?php
+$cat = new Category();
 
-				<?php
-				$getCat = $cat->getAllCat();
-				if ($getCat) {
-					$i = 0;
-					while ($result = $getCat->fetch_assoc()) {
-						$i++;
-				
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['catId']) && isset($_POST['catName'])) {
+        // Updating category
+        $catId = $_POST['catId'];
+        $catName = $_POST['catName'];
+        $updateCat = $cat->catUpdate($catName, $catId);
+        echo json_encode(["message" => $updateCat]);
+    } else {
+        // Adding new category
+        $catName = $_POST['catName'];
+        $insertCat = $cat->catInsert($catName);
+        echo json_encode(["message" => $insertCat]);
+    }
+    exit;
+}
+?>
 
-				?>		
-						<tr class="odd gradeX">
-							<td><?php echo $i;?></td>
-							<td><?php echo $result['catName'];?></td>
-							<td><button class="editBtn" data-id="<?php echo $result['catId']; ?>" data-name="<?php echo $result['catName']; ?>">Edit</button></a> || <a onclick="return confirm('Are you sure to delete!')" href="?delcat=<?php echo $result['catId'];?>">Delete</a></td>
-						</tr>
-					<?php } } ?>	
-					</tbody>
-				</table>
-               </div>
-            </div>
+<div class="grid_10">
+    <div class="box round first grid">
+        <div class="header-bar">
+            <h2>Category List</h2>
+            <button id="openModalBtn">Add New Category</button>
         </div>
-        <!-- Add Category Modal -->
+        <div class="block">
+            <table class="data display datatable" id="example">
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Category Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                $getCat = $cat->getAllCat();
+                if ($getCat) {
+                    $i = 0;
+                    while ($result = $getCat->fetch_assoc()) {
+                        $i++;
+                ?>      
+                    <tr class="odd gradeX">
+                        <td><?php echo $i;?></td>
+                        <td><?php echo $result['catName'];?></td>
+                        <td>
+                            <button class="editBtn" data-id="<?php echo $result['catId']; ?>" data-name="<?php echo $result['catName']; ?>">Edit</button>
+                            || <a onclick="return confirm('Are you sure to delete!')" href="?delcat=<?php echo $result['catId'];?>">Delete</a>
+                        </td>
+                    </tr>
+                <?php } } ?>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Add Category Modal -->
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Add New Category</h2>
-        <div class="block copyblock">
-            <form id="categoryForm">
-                <input type="text" name="catName" id="catName" placeholder="Enter Category Name..." required />
-                <input type="submit" value="Save" />
-            </form>
-            <p id="responseMessage"></p>
-        </div>
+        <form id="categoryForm">
+            <input type="text" name="catName" id="catName" placeholder="Enter Category Name..." required />
+            <button type="submit" id="saveCategoryBtn">Save</button>
+        </form>
+        <p id="responseMessage"></p>
     </div>
 </div>
+
 <!-- Edit Category Modal -->
 <div id="editModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Edit Category</h2>
-        <div class="block copyblock">
-            <form id="editCategoryForm">
-                <input type="hidden" name="catId" id="editCatId">
-                <input type="text" name="catName" id="editCatName" required />
-                <input type="submit" value="Update" />
-            </form>
-            <p id="editResponseMessage"></p>
-        </div>
+        <form id="editCategoryForm">
+            <input type="hidden" name="catId" id="editCatId">
+            <input type="text" name="catName" id="editCatName" required />
+            <button type="submit" id="saveEditCategoryBtn">Save</button>
+        </form>
+        <p id="editResponseMessage"></p>
     </div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function () {
-	    setupLeftMenu();
 
-	    $('.datatable').dataTable();
-	    setSidebarHeight();
-	});
-</script>
 <script>
-// Get modal and close buttons
-var modal = document.getElementById("myModal");
-var editModal = document.getElementById("editModal");
-var btn = document.getElementById("openModalBtn");
-var closeBtns = document.getElementsByClassName("close");
-
-// Open Add Modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// Close modals
-for (var i = 0; i < closeBtns.length; i++) {
-    closeBtns[i].onclick = function() {
-        modal.style.display = "none";
-        editModal.style.display = "none";
-    }
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    } else if (event.target == editModal) {
-        editModal.style.display = "none";
-    }
-}
-
-// Handle add category form submission
+    document.getElementById("saveCategoryBtn").addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent default link behavior
+    document.getElementById("categoryForm").submit(); // Submit the form
+    });
+    document.getElementById("saveEditCategoryBtn").addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent default link behavior
+    document.getElementById("editCategoryForm").submit(); // Submit the form
+    });
 $(document).ready(function() {
-    $("#categoryForm").submit(function(e) {
+    // Open Add Modal
+    $("#openModalBtn").click(function() {
+        $("#myModal").show();
+    });
+
+    // Close modal
+    $(".close").click(function() {
+        $(".modal").hide();
+    });
+
+    // Close modal when clicking outside
+    $(window).click(function(event) {
+        if ($(event.target).is(".modal")) {
+            $(".modal").hide();
+        }
+    });
+
+    // Handle "Add Category" form submission
+    $("#saveCategoryBtn").click(function(e) {
         e.preventDefault();
         var catName = $("#catName").val();
-        
+
         $.ajax({
             type: "POST",
             url: "",
@@ -359,25 +340,24 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
                 $("#responseMessage").text(response.message);
-                setTimeout(function() {
-                    location.reload();
-                }, 1000);
+                $(".modal").hide(); // Close modal after success
+                location.reload(true);  // ✅ Reloads page immediately after saving
             }
         });
     });
 
-    // Handle edit button click
+    // Open Edit Modal
     $(".editBtn").click(function() {
         var catId = $(this).data("id");
         var catName = $(this).data("name");
 
         $("#editCatId").val(catId);
         $("#editCatName").val(catName);
-        editModal.style.display = "block";
+        $("#editModal").show();
     });
 
-    // Handle edit category form submission
-    $("#editCategoryForm").submit(function(e) {
+    // Handle "Edit Category" form submission
+    $("#saveEditCategoryBtn").click(function(e) {
         e.preventDefault();
         var catId = $("#editCatId").val();
         var catName = $("#editCatName").val();
@@ -389,14 +369,13 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
                 $("#editResponseMessage").text(response.message);
-                setTimeout(function() {
-                    location.reload();
-                }, 1000);
+                $(".modal").hide(); // Close modal after success
+                location.reload(true);  // ✅ Reloads page immediately after saving
             }
         });
     });
-});
-$(document).ready(function() {
+
+    // Handle delete category
     $(".deleteBtn").click(function(e) {
         e.preventDefault();
         var catId = $(this).data("id");
@@ -404,16 +383,17 @@ $(document).ready(function() {
         if (confirm("Are you sure you want to delete this category?")) {
             $.ajax({
                 type: "GET",
-                url: "", // Keep empty to call the same script
+                url: "",
                 data: { delcat: catId },
                 success: function(response) {
                     alert("Category deleted successfully!");
-                    location.reload();
+                    location.reload(true);  // ✅ Reloads page immediately after deleting
                 }
             });
         }
     });
 });
-</script>
-<?php include 'inc/footer.php';?>
 
+</script>
+
+<?php include 'inc/footer.php';?>

@@ -243,11 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['brandName'])) {
         $response = $brand->brandInsert($brandName);
     }
 
-    echo json_encode([
-        "success" => $response ? true : false,
-        "message" => $response ? "Brand " . ($brandId ? "updated" : "added") . " successfully!" : "Failed to process request."
-    ]);
-    exit();
+
 }
 ?>
 
@@ -308,10 +304,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['brandName'])) {
         <div id="responseMessage"></div>
 
         <form id="brandForm" method="POST">
-            <input type="hidden" name="brandid" id="brandid">
-            <input type="text" name="brandName" id="brandName" placeholder="Enter Brand Name..." required />
-            <input type="submit" value="Save" />
-        </form>
+    <input type="hidden" name="brandid" id="brandid">
+    <input type="text" name="brandName" id="brandName" placeholder="Enter Brand Name..." required />
+    <a href="#" id="saveBtn" class="button">Save</a>
+</form>
+
     </div>
 </div>
 <script type="text/javascript">
@@ -321,6 +318,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['brandName'])) {
 	    $('.datatable').dataTable();
 	    setSidebarHeight();
 	});
+    document.getElementById("saveBtn").addEventListener("click", function(e) {
+    e.preventDefault(); // Prevent default link behavior
+    document.getElementById("brandForm").submit(); // Submit the form
+    });
     $(document).ready(function() {
     // Open Add Modal
     $("#openAddModalBtn").click(function() {
