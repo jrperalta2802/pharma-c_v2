@@ -74,7 +74,7 @@ body{
 	cursor:pointer;
 	color:#FFF;
 	font-size:12px;
-	padding:10px 15px;
+	padding:10px;
 	height: 36px;
 	margin:0;
 	background: -webkit-gradient(linear,left top,left bottom,from(#F58220),to(#F58220));
@@ -105,6 +105,7 @@ body{
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	cursor:pointer;
+	margin-right: 10px;
 }
 .cart{
 	height: 38px;
@@ -169,11 +170,11 @@ input[type="number"] {
   color: #444;
   display: block;
   float: left;
-  font-size: 27px;
+  font-size: 15px;
+  padding:10px;
   height: 38px;
-  margin-left: 10px;
+  margin: 0;
   text-align: center;
-  width: 144px;
   background: #F58220;
 }
 .login a {
@@ -1446,6 +1447,7 @@ table.tblone img {
 .register_account form input[type="text"].number{
 	width:63.99%;
 }
+
 .login_panel {
 	width:30%;
 	padding:10px;
@@ -1500,6 +1502,8 @@ p.terms {
 	.support img {
 	margin-left: 3%;
 	}
+
+
 }
 @media only screen and (max-width:800px) {
 	.wrap{
@@ -1769,7 +1773,7 @@ p.terms {
 		width:78.5%;
     }
     .search_box form input[type="submit"] {
-    	width:18.5%;
+    	width: 20%;
     }
     .shopping_cart {
     	width:16.5%;
@@ -1787,6 +1791,7 @@ p.terms {
     .login{
     	margin-left:5px;
     	margin-top:8px;
+
     }
     .list_2_of_1 .button a {
     	padding:5px 10px;
@@ -1796,6 +1801,8 @@ p.terms {
 		float:inherit;
 		margin:2% 0 0% 0%;
 	}
+
+
     /* Content */
      .content_top {
     	padding:15px 10px;

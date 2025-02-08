@@ -73,6 +73,7 @@ $cmr = new Customer();
 
 
 
+
 </head>
 <body>
   <div class="wrap">
@@ -89,7 +90,7 @@ $cmr = new Customer();
 			    </div>
 			    <div class="shopping_cart">
 					<div class="cart">
-						<a href="#" title="View my shopping cart" rel="nofollow">
+						<a href="cart.php" title="View my shopping cart" rel="nofollow">
 								<span class="cart_title">Cart</span>
 								<span class="no_product">
 

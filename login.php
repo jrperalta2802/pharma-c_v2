@@ -57,8 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     width: 100%;
 }
 
+/* FORM!! */
 .register_account table td {
-    width: 50%;
+    width: 100%;
     vertical-align: top;
     padding: 5px;
 }
@@ -169,36 +170,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
 							<div>
 							<input type="text" name="name" placeholder="Name"/>
 							</div>
+
+                            <div>
+                                <input type="text" name="email" placeholder="Email"/>
+							</div>
+
+                            <div>
+					            <input type="password" name="pass" placeholder="Password"/>
+                            </div>
+
+                            <div>
+		                        <input type="text" name="phone" placeholder="Phone"/>
+		                    </div>
+
+                            <div>
+							    <input type="text" name="country" placeholder="Country"/>
+						    </div>
 							
 							<div>
-							   <input type="text" name="city" placeholder="City"/>
+                                <input type="text" name="city" placeholder="City"/>
 							</div>
-							
-							<div>
-								<input type="text" name="zip" placeholder="Zip-Code"/>
+
+                            <div>
+							    <input type="text" name="address" placeholder="Address"/>
+						    </div>
+
+                            <div>
+                                <input type="text" name="zip" placeholder="Zip-Code"/>
 							</div>
-							<div>
-								<input type="text" name="email" placeholder="Email"/>
-							</div>
-		    			 </td>
-		    			<td>
-						<div>
-							<input type="text" name="address" placeholder="Address"/>
-						</div>
-		    		
-						<div>
-							<input type="text" name="country" placeholder="Country"/>
-						</div>
-				 	        
-	
-		           <div>
-		          <input type="text" name="phone" placeholder="Phone"/>
-		          </div>
-				  
-				  <div>
-					<input type="password" name="pass" placeholder="Password"/>
-				</div>
+		           
 		    	</td>
+
 		    </tr> 
 		    </tbody></table> 
 		   <div class="search"><div><button class="grey" name="register">Create Account</button></div></div>
