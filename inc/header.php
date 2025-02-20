@@ -73,13 +73,14 @@ $cmr = new Customer();
 
 
 
+
 </head>
 <body>
   <div class="wrap">
-  <div class="header_top">
-        <div class="logo">
-            <a href="index.php"><img src="images/logo1.png" alt="Logo" /></a>
-        </div>
+		<div class="header_top">
+			<div class="logo">
+				<a href="index.php"><img src="images/logo1.png" alt="" /></a>
+			</div>
 			  <div class="header_top_right">
 			    <div class="search_box">
 				    <form action="search.php" method="get">
@@ -89,7 +90,7 @@ $cmr = new Customer();
 			    </div>
 			    <div class="shopping_cart">
 					<div class="cart">
-						<a href="#" title="View my shopping cart" rel="nofollow">
+						<a href="cart.php" title="View my shopping cart" rel="nofollow">
 								<span class="cart_title">Cart</span>
 								<span class="no_product">
 
@@ -98,7 +99,7 @@ $cmr = new Customer();
 							if ($getData) {
 								$sum = Session::get("sum");
 								$qty = Session::get("qty");
-								echo "TK.". $sum." qty: ".$qty;
+								echo "₱". $sum." qty: ".$qty;
 							}else{
 								echo "(Empty)";
 							}
@@ -144,7 +145,7 @@ if ($login == false) {  ?>
 	<ul id="dc_mega-menu-orange" style="text-transform: uppercase;" class="dc_mm-orange">
 	<div class="topnav" id="myTopnav">
 	  <a href="index.php">Home</a>
-	  <a href="topbrands.php">Top Brands</a>
+	  
 <?php 
 $chkCart = $ct->checkCartTable();
 if ($chkCart) { ?>

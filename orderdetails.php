@@ -55,7 +55,7 @@ if (isset($_GET['customerId'])) {
                                 <td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
                                 <td><?php echo $result['quantity']; ?></td>
                     
-                                <td>Tk. <?php echo $result['price'];?></td>
+                                <td>₱ <?php echo $result['price'];?></td>
                          <td><?php echo $fm->formatDate($result['date']); ?></td>
 
                          <td><?php
